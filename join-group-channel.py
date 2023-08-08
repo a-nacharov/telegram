@@ -1,4 +1,5 @@
 import os
+import sys
 import asyncio
 
 from telethon.sync import TelegramClient
@@ -12,7 +13,12 @@ api_id = os.getenv('API_ID')
 api_hash = os.getenv('API_HASH')
 client_name = os.getenv('CLIENT_NAME')
 
-ch = ['https://t.me/USApatriotsQ','https://t.me/LadBible8','https://t.me/GrahamAllen1'] 
+ch = []
+for i in range(1, len(sys.argv)):
+    ch.append(sys.argv[i])
+    
+# print(ch)
+# ch = ['https://t.me/USApatriotsQ','https://t.me/LadBible8','https://t.me/GrahamAllen1'] 
 # ch = ['https://t.me/joinchat/uUanGl_uNGo3MjU0']
 
 async def main():

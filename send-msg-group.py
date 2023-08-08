@@ -1,4 +1,5 @@
 import os
+import sys
 
 from telethon import TelegramClient
 from dotenv import load_dotenv
@@ -10,14 +11,13 @@ api_hash = os.getenv('API_HASH')
 client_name = os.getenv('CLIENT_NAME')
 client = TelegramClient(client_name, api_id, api_hash)
 
-async def main():
-    # 
-    # me = await client.get_me()
-    # 
-    # username = me.username
+group = sys.argv[1]
+message = sys.argv[2]
 
-    for i in range(20):
-        await client.send_message('https://t.me/testeramn', 'marcelo - ' + str(i))
+# print(message)
+async def main():
+    
+    await client.send_message(group, message)
 
 with client:
     client.loop.run_until_complete(main())
